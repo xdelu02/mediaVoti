@@ -1,0 +1,1 @@
+#qua va un prompt che chiede codice della scuola, username e password
