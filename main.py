@@ -4,14 +4,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-from dataInputUI import *
+import dataInputUI
 
-x = "ciao"
 PATH = "./chromedriver88.0.4324.96.exe"
 driver = webdriver.Chrome(PATH)
-codicescuola = codScuola
-username = user
-password = passw
+codicescuola = dataInputUI.codScuola # sg18309
+username = dataInputUI.user
+password = dataInputUI.passw
 
 # prima pagina
 driver.get("http://"+codicescuola+".scuolanext.info")
