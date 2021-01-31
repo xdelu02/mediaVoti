@@ -4,12 +4,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import start
+
+print("Codice scuola: " + start.codiceScuola + ", Username: " + start.username + ", Password: " + start.password)
 
 PATH = "./chromedriver88.0.4324.96.exe"
 driver = webdriver.Chrome(PATH)
-codicescuola = "sg18309"  # temporanemente poi va chiesto in input
-username = ""  #<---------- metti qua username
-password = ""
+codicescuola = start.codiceScuola # sg18309
+username = start.username
+password = start.password
 
 # prima pagina
 driver.get("http://"+codicescuola+".scuolanext.info")
