@@ -44,6 +44,14 @@ try:
     for voto in voti:
         materia = voto.find_element_by_tag_name("legend")
         print(materia.text)
+        risultati = voto.find_elements_by_tag_name("tr")
+        for risultato in risultati:
+            try:
+                res = risultato.find_element_by_tag_name("span")
+            except:
+                res = risultato.find_element_by_tag_name("div")
+            finally:
+                print(res.text)
 finally:
     pass
 
