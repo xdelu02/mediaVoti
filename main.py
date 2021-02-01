@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import dataInputUI
 
-PATH = "./chromedriver88.0.4324.96.exe"
+PATH = ".\chromedriver88.0.4324.96" # "E:\GoogleDriver\chromedriver.exe"
 driver = webdriver.Chrome(PATH)
 codicescuola = dataInputUI.codScuola # sg18309
 username = dataInputUI.user
@@ -29,12 +29,25 @@ finally:
 
 # seconda pagina
 try:
-    inputUsername = WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 20).until(
         EC.presence_of_element_located((By.ID, "menu-servizialunno:vot"))
     ).click()
 finally:
     pass
 
+# terza pagina (Voti)
+try:
+    divVoti = WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.ID, "sheet-sezioneDidargo:panel-votiGiornalieri:pannello"))
+    )
+    voti = divVoti.find_elements_by_tag_name("fieldset")
+    for voto in voti:
+        materia = voto.find_element_by_tag_name("legend")
+        print(materia.text)
+finally:
+    pass
+
 
 time.sleep(20)
+input()
 driver.quit()
