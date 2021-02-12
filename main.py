@@ -3,13 +3,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
 import data
 import re
 from datetime import datetime
+from selenium.webdriver.chrome.options import Options
 
-PATH = ".\chromedriver88.0.4324.96" # "E:\GoogleDriver\chromedriver.exe"
-driver = webdriver.Chrome(PATH)
+PATH = ".\chromedriver8" # "E:\GoogleDriver\chromedriver.exe"
+options = Options()
+options.headless = True
+driver = webdriver.Chrome(PATH, chrome_options=options)
 
 if not data.isEmpty(): 
     while True:
@@ -33,7 +35,7 @@ else:
 
 # prima pagina
 driver.get("http://"+codicescuola+".scuolanext.info")
-driver.maximize_window()
+
 
 login = False
 while not login:
@@ -111,7 +113,4 @@ try:
 finally:
     pass
 
-
-time.sleep(20)
-input()
 driver.quit()
